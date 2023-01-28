@@ -29,13 +29,14 @@ function calculoDivisa() {
     }  
     
 }
+//Funcion que se encarga de multiplicar el valor ingresado por el valor actual de la moneda (recibe dos parametros tipo de moneda y el valor)
 function operacionDivisa (valor, moneda){
     switch (moneda){
         case "Euro": alert("La cantidad de $"+ valor +"  equivale a  $"+ valor*207,80);
         break;
-        case "Dolar": alert("La cantidad de $"+ valor +"  equivale a  $"+ valor*380,80);
+        case "Dolar": alert("La cantidad de $"+ valor +"  equivale a  $"+ valor*201,59);
         break;
-        case "Real": alert("La cantidad de $"+ valor +"  equivale a  $"+ valor*150,80);
+        case "Real": alert("La cantidad de $"+ valor +"  equivale a  $"+ valor*36,29);
         break;
     }
 
