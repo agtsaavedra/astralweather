@@ -12,6 +12,23 @@ var bsas = new city("Buenos Aires", "34 Grados Celcius", "21 KM/H", "1123 hPa");
 var ros = new city("Rosario", "23 Grados Celcius", "11 KM/H", "1220 hPa");
 var bb = new city("Bahia Blanca", "19 Grados Celcius", "54 KM/H", "1020 hPa");
 
+
+//Parseo a JSON STRING
+
+var mdqJson = JSON.stringify(mdq);
+var bsasJson = JSON.stringify(bsas);
+var rosJson = JSON.stringify(ros);
+var bbJson = JSON.stringify(bb);
+
+//Almacenado en LocalStorage
+
+localStorage.setItem("saveMdq", "mdqJson");
+localStorage.setItem("saveBsas", "bsasJson");
+localStorage.setItem("rosMdq", "rosJson");
+localStorage.setItem("bbMdq", "bbJson");
+
+//Obtencion de los elementos cards html
+
 const cardMdq = document.getElementById("cardMdq");
 const cardBsas = document.getElementById("cardBsas");
 const cardRos = document.getElementById("cardRos");
