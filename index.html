@@ -18,37 +18,70 @@
             AstralWeather
         </a>
     </nav>
-    <div class="container input-group mb-3">
-        <form class="container d-flex" id="search-form">
-        <input type="text" class="form-control" placeholder="Ingrese una ciudad" aria-label="Ingrese una ciudad" aria-describedby="button-addon2" id="search-box">
-        </form>
-      </div>
-      
+    <section class="vh-100 card">
+        <div class="container py-5 h-100">
 
-        </div>
-    </div>
+            <div class="row d-flex justify-content-center align-items-center h-10">
+                <div class="col-md-8 col-lg-6 col-xl-4">
 
-    <div class="container">
-        <div class="row weatherContainer text-center align-items-center col-md-12">
-            <div class="border rounded bg-dark bg-gradient text-light">
-                <div class="title" id="city"><h1>Mar del Plata</h1></div>
-                <div class="date" id="date"><h5>21/03/2023</h5></div>
-                <div class="temperature d-flex justify-content-center" id="temp-img">
-                    <div class="iconWeather">
-                        <img src="./images/iconWeather.png" style="width:50px"></div>
-                     <div id="temp"><h2>23C</h2></div>
+                    <h3 class="mb-4 pb-2 fw-normal">Revisa el clima hoy!</h3>
+
+                    <div class="input-group rounded mb-3">
+                        <input type="search" class="form-control rounded" placeholder="Ciudad" aria-label="Search"
+                            aria-describedby="search-addon" id="search-box"/>
+                        <a type="button" id="search-btn" onclick="">
+                            <span class="input-group-text border-0 fw-bold" >
+                               Busqueda
+                            </span>
+                        </a>
                     </div>
-                <div id="details">Soleado</div>
-                <div id="maxmin"> 18c / 26c</div>
+
+                    <div class="mb-4 pb-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioK"
+                                value="Kelvin" checked />
+                            <label class="form-check-label" for="inlineRadio1">Kelvin</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioC"
+                                value="Celsius" />
+                            <label class="form-check-label" for="inlineRadio2">Celsius</label>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-0 border">
+                        <div class="card-body p-4">
+
+                            <h4 class="mb-1 sfw-normal" id="city">------</h4>
+                            <p class="mb-2">Temperatura Actual: <strong id="temp">----</strong></p>
+                            <p id="maxmin">Max: <strong id="tempmax">----°C</strong>, Min: <strong id="tempmin">----°C</strong></p>
+
+                            <div class="d-flex flex-row align-items-center">
+                                <p class="mb-0 me-4" id="details">----------</p>
+                                <i class="fas fa-cloud fa-3x" style="color: #eee;"></i>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
+    </section>
+   
+
+
     </div>
-        <footer class="text-white text-center border-top mt-auto">
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-              © 2022 Copyright: ASaave Pages 
-            </div>
-          </div> 
-          </footer>
+    </div>
+
+    <footer class="text-white text-center border-top mt-auto">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright: ASaave Pages
+        </div>
+        </div>
+    </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
