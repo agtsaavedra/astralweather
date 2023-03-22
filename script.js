@@ -1,92 +1,43 @@
-//Constructor de objeto ciudad
-function city(ciudad, temperatura, viento, presion) {
-    this.ciudad = ciudad;
-    this.temperatura = temperatura;
-    this.viento = viento;
-    this.presion = presion;
-}
-//Creacion de objetos con distintas propiedades segun ciudades
-
-var mdq = new city("Mar del Plata", "27 Grados Celcius", "35 KM/H", "1003 hPa");
-var bsas = new city("Buenos Aires", "34 Grados Celcius", "21 KM/H", "1123 hPa");
-var ros = new city("Rosario", "23 Grados Celcius", "11 KM/H", "1220 hPa");
-var bb = new city("Bahia Blanca", "19 Grados Celcius", "54 KM/H", "1020 hPa");
-
-
-//Parseo a JSON STRING
-
-var mdqJson = JSON.stringify(mdq);
-var bsasJson = JSON.stringify(bsas);
-var rosJson = JSON.stringify(ros);
-var bbJson = JSON.stringify(bb);
-
-//Almacenado en LocalStorage
-
-localStorage.setItem("saveMdq", "mdqJson");
-localStorage.setItem("saveBsas", "bsasJson");
-localStorage.setItem("rosMdq", "rosJson");
-localStorage.setItem("bbMdq", "bbJson");
-
-//Obtencion de los elementos cards html
-
-const cardMdq = document.getElementById("cardMdq");
-const cardBsas = document.getElementById("cardBsas");
-const cardRos = document.getElementById("cardRos");
-const cardbb = document.getElementById("cardBb");
-
-const citycards = [cardMdq, cardBsas, cardRos, cardbb]
-const ciudades = [mdq, bsas, ros, bb]
-
-//Titulos
-
-cardMdq.innerHTML = `<h2>${mdq.ciudad}</h2>`
-
-cardBsas.innerHTML = `<h2>${bsas.ciudad}</h2>`
-
-cardRos.innerHTML = `<h2>${ros.ciudad}</h2>`
-
-cardbb.innerHTML = `<h2>${bb.ciudad}</h2>`
-
-//Eventos
-
-cardMdq.addEventListener("mouseover", mdqClima);
-cardBsas.addEventListener("mouseover", bsasClima);
-cardRos.addEventListener("mouseover", rosClima);
-cardbb.addEventListener("mouseover", bbClima);
-
-// Funciones que modifican luego de un Hover en las tarjetas
-
-function mdqClima() {
-    cardMdq.innerHTML = `
-    <h2>Mar del Plata</h2>
-    <h3>Temperatura: ${mdq.temperatura}</h3>
-    <p>Presion: ${mdq.presion}</p>
-    <p>Viento: ${mdq.viento}</p>
-     `
+//Constante API
+const APIweather = {
+    key: "0d508485b2042924a6316ec696440756",
+    url: "https://api.openweathermap.org/data/2.5/weather"
 }
 
-function rosClima() {
-    cardRos.innerHTML = `
-    <h2>Rosario</h2>
-    <h3>Temperatura: ${ros.temperatura}</h3>
-    <p>Presion: ${ros.presion}</p>
-    <p>Viento: ${ros.viento}</p>
-     `
+const temp = document.getElementById("temp");
+const maxmin = document.getElementById("maxmin");
+const details = document.getElementById("details");
+const date = document.getElementById("date")
+const city = document.getElementById("city");
+
+async function searching(query) {
+    try {
+        const response = await fetch(`${APIweather.url}?q=${query}&appid=${APIweather.key}&lang=es`);
+        const dataW = await response.json();
+        console.log(dataW);
+
+        city.innerHTML = `${dataW.name}, ${dataW.sys.country}`;
+        temp.innerHTML = dataW.main.temp;
+        details.innerHTML = dataW.weather[0].description;
+        
+    } catch (error) {
+        console.log(error);
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Ups',
+            text: 'Hubo un error al cargar la ciudad',
+            
+        })
+    }
 }
-function bsasClima() {
-    cardBsas.innerHTML = `
-    <h2>Buenos Aires</h2>
-    <h3>Temperatura: ${bsas.temperatura}</h3>
-    <p>Presion: ${bsas.presion}</p>
-    <p>Viento: ${bsas.viento}</p>
-     `
-}
-function bbClima() {
-    cardbb.innerHTML = `
-    <h2>Bahia Blanca</h2>
-    <h3>Temperatura: ${bb.temperatura}</h3>
-    <p>Presion: ${bb.presion}</p>
-    <p>Viento: ${bb.viento}</p>
-     `
+function formSumbit(event) {
+    event.preventDefault();
+    searching(searchbox.value);
+
 }
 
+const form = document.getElementById('search-form');
+const searchbox = document.getElementById('search-box');
+
+form.addEventListener("submit", formSumbit);

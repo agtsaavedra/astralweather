@@ -7,62 +7,73 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
+:root{
+    background-color: #191919;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 
 body {
-    background-color: #eee;
+    background-color: #191919;
     font-family: "Poppins", sans-serif;
     font-weight: 300;
 }
 
-.height {
-    height: 100vh;
+.search-form {
+    margin: 20px 20px;
+  }
+  
+  .searchbox {
+    padding: 10px 20px;
+    background-color: var(--text-color);
+    max-width: 480px;
+    margin: 0px auto;
+    border-radius: 3px;
+  }
+  
+  .search {
+    width: 100%;
+    background-color: var(--text-color);
+    border: none;
+    font-size: 1rem;
+  }
+  
+  .search:focus {
+    outline: none;
+  }
+
+
+.iconWeather {
+    width: 50px;
 }
-
-
-.search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
-
-}
-
-.search input {
-
-    height: 60px;
-    text-indent: 25px;
-    border: 2px solid #d6d4d4;
-
-
-}
-
-
-.search input:focus {
-
-    box-shadow: none;
-    border: 2px solid blue;
-
-
-}
-
-.search .fa-search {
-
-    position: absolute;
-    top: 20px;
-    left: 16px;
-
-}
-
-.search button {
-
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 50px;
-    width: 110px;
-    background: blue;
-
-}
-
 .cards-clima {
     background-color: grey;
     background: grey;
+}
+
+.footer {
+    padding-top: 5vh;
+    background-color: #191919;;
+    border-top: #4646467a;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    
+  }
+
+.weatherContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #191919;
+}
+
+.temperature {
+    font-size: 15px;
+
+}
+
+.icon {
+    width: 50px !important;
 }

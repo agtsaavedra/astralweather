@@ -11,38 +11,44 @@
     <title>AstralWeather</title>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-light bg-light nav-bar-custom">
         <a class="navbar-brand" href="#">
             <img src="./images/images.png" width="30" height="30" class="d-inline-block align-top" alt="">
             AstralWeather
         </a>
     </nav>
-    <div class="container">
-
-        <div class="row  d-flex justify-content-center align-items-center">
-
-            <div class="col-md-8">
-
-                <div class="search d-flex">
-                    <i class="fa fa-search"></i>
-                    <input type="text" class="form-control" placeholder="Ingrese una ciudad">
-                    <button class="btn btn-primary">Busqueda</button>
-                </div>
-
-            </div>
+    <div class="container input-group mb-3">
+        <form class="container d-flex" id="search-form">
+        <input type="text" class="form-control" placeholder="Ingrese una ciudad" aria-label="Ingrese una ciudad" aria-describedby="button-addon2" id="search-box">
+        </form>
+      </div>
+      
 
         </div>
     </div>
 
     <div class="container">
-        <div class="row  justify-content-center">
-            <div class="cards-clima col-md-2 border rounded text-center border-opacity-25 p-2 m-2 shadow-sm" id="cardMdq"></div>
-            <div class="col-md-2 border rounded text-center border-opacity-25 p-2 m-2 shadow-sm" id="cardBsas"></div>
-            <div class="col-md-2 border rounded text-center border-opacity-25 p-2 m-2 shadow-sm" id="cardRos"></div>
-            <div class="col-md-2 border rounded text-center border-opacity-25 p-2 m-2 shadow-sm" id="cardBb"></div>
+        <div class="row weatherContainer text-center align-items-center col-md-12">
+            <div class="border rounded bg-dark bg-gradient text-light">
+                <div class="title" id="city"><h1>Mar del Plata</h1></div>
+                <div class="date" id="date"><h5>21/03/2023</h5></div>
+                <div class="temperature d-flex justify-content-center" id="temp-img">
+                    <div class="iconWeather">
+                        <img src="./images/iconWeather.png" style="width:50px"></div>
+                     <div id="temp"><h2>23C</h2></div>
+                    </div>
+                <div id="details">Soleado</div>
+                <div id="maxmin"> 18c / 26c</div>
+            </div>
         </div>
-
+    </div>
+        <footer class="text-white text-center border-top mt-auto">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              © 2022 Copyright: ASaave Pages 
+            </div>
+          </div> 
+          </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
