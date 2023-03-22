@@ -64,7 +64,7 @@ function toCelsius(input) {
 }
 
 
-
 const clearField = () => {
     searchbox.value = "" ;
 }
+

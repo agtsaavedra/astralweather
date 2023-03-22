@@ -5,19 +5,15 @@
     margin: 0;
     border: 0;
     font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
-:root{
-    background-color: #191919;
-    font-family: 'Times New Roman', Times, serif;
-}
-
 
 .footer {
     padding-top: 5vh;
-    background-color: #191919;;
+    background-color: #130000;;
     border-top: #4646467a;
     position: absolute;
     bottom: 0;
@@ -27,4 +23,7 @@
   }
 
 
+.card {
+    background-color: #6161613d;
+}
 
