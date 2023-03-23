@@ -26,6 +26,7 @@ async function searching(query) {
         console.log(dataW);
 
         if (btnRadioC.checked) {
+            //Seteo si grados celsius es check en radio
             city.innerHTML = `${dataW.name}, ${dataW.sys.country}`;
             temp.innerHTML = toCelsius(dataW.main.temp);
             details.innerHTML = dataW.weather[0].description;
@@ -53,19 +54,19 @@ async function searching(query) {
         })
     }
 }
-
+//Funcion que ejecuta al realizar un click en boton busqueda
 btnSumbit.onclick = function formSumbit(event) {
     event.preventDefault();
     searching(searchbox.value);
 }
 
-
+//Funcion que convierte grados kelvin a celsius
 function toCelsius(input) {
     return Math.round(input - 273.15);
 
 }
 
-
+//Funcion que reinicia campo busqueda
 const clearField = () => {
     searchbox.value = "";
 }
