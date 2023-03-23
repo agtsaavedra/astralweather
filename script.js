@@ -31,6 +31,7 @@ async function searching(query) {
             details.innerHTML = dataW.weather[0].description;
             tempmax.innerHTML = toCelsius(dataW.main.temp_max);
             tempmin.innerHTML = toCelsius(dataW.main.temp_min);
+            checkedWarning(dataW.main.temp);
 
         } else {
             city.innerHTML = `${dataW.name}, ${dataW.sys.country}`;
@@ -38,8 +39,9 @@ async function searching(query) {
             details.innerHTML = dataW.weather[0].description;
             tempmax.innerHTML = dataW.main.temp_max;
             tempmin.innerHTML = dataW.main.temp_min;
+            checkedWarning(dataW.main.temp)
         }
-        
+
         clearField();
     } catch (error) {
         console.log(error);
@@ -65,6 +67,31 @@ function toCelsius(input) {
 
 
 const clearField = () => {
-    searchbox.value = "" ;
+    searchbox.value = "";
 }
 
+
+//Warning hecho con sweetAlert para informar que esta haciendo mucho calor o frio
+const checkedWarning = (temp) => {
+    const tempreal = temp - 273.15
+    if (tempreal > 28) {
+        
+        Swal.fire({
+            icon: 'warning',
+            title: 'Alerta',
+            text: 'Atencion, esta haciendo mucho calor',
+
+        })
+    }
+
+    if (tempreal < 10) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Alerta',
+            text: 'Atencion, esta haciendo mucho frio',
+
+        })
+
+    }
+
+}
