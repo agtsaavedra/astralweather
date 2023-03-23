@@ -75,7 +75,7 @@ const clearField = () => {
 const checkedWarning = (temp) => {
     const tempreal = temp - 273.15
     if (tempreal > 28) {
-        
+
         Swal.fire({
             icon: 'warning',
             title: 'Alerta',
