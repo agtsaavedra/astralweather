@@ -1,95 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="./styles/styles.css" media="screen">
-<link rel="icon" type="image/png" href="./images/iconWeather.png"/>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" media="screen">
+    <link rel="icon" type="image/png" href="./images/iconWeather.png" />
     <title>AstralWeather</title>
 </head>
-
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-light bg-light nav-bar-custom">
+    <nav class="navbar navbar-light bg-light nav-bar-custom d-flex justify-content-between">
         <a class="navbar-brand" href="#">
             <img src="./images/images.png" width="30" height="30" class="d-inline-block align-top" alt="">
             AstralWeather
         </a>
+        <!-- Toggle de idioma -->
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="language-toggle">
+            <label class="form-check-label" for="language-toggle" id="language-label">Español</label>
+        </div>
     </nav>
-    <section class="vh-100 card">
+    
+    <section class="card mains" id="mains">
         <div class="container py-5 h-100">
-
             <div class="row d-flex justify-content-center align-items-center h-10">
                 <div class="col-md-8 col-lg-6 col-xl-4">
-
-                    <h3 class="mb-4 pb-2 fw-normal">Revisa el clima hoy!</h3>
-
-                    <div class="input-group rounded mb-3">
+                    <h3 class="mb-4 pb-2 fw-normal" id="weather-header">Revisa el clima hoy!</h3>
+                    <div class="input-group rounded mb-3 position-relative">
                         <input type="search" class="form-control rounded" placeholder="Ciudad" aria-label="Search"
-                            aria-describedby="search-addon" id="search-box"/>
-                        <a type="button" id="search-btn" onclick="">
-                            <span class="input-group-text border-0 fw-bold" >
-                               Busqueda
+                               aria-describedby="search-addon" id="search-box" />
+                        <a type="button" id="search-btn">
+                            <span class="input-group-text border-0 fw-bold">
+                                Búsqueda
                             </span>
                         </a>
+                        <!-- Contenedor para las sugerencias de autocompletar -->
+                        <ul id="suggestions" class="list-group position-absolute w-100 mt-1"></ul>
                     </div>
-
                     <div class="mb-4 pb-2">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioK"
-                                value="Kelvin" checked />
-                            <label class="form-check-label" for="inlineRadio1">Kelvin</label>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioF"
+                                value="Fahrenheit" />
+                            <label class="form-check-label" for="radioF">Fahrenheit</label>
                         </div>
-
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioC"
-                                value="Celsius" />
-                            <label class="form-check-label" for="inlineRadio2">Celsius</label>
+                                value="Celsius" checked />
+                            <label class="form-check-label" for="radioC">Celsius</label>
                         </div>
                     </div>
-
                     <div class="card shadow-0 border">
                         <div class="card-body p-4">
-
                             <h4 class="mb-1 sfw-normal" id="city">------</h4>
-                            <p class="mb-2">Temperatura Actual: <strong id="temp">----</strong></p>
-                            <p id="maxmin">Max: <strong id="tempmax">----°C</strong>, Min: <strong id="tempmin">----°C</strong></p>
-
+                            <p class="mb-2" id="temp-label">Temperatura Actual: <strong id="temp">----</strong></p>
+                            <p id="maxmin">
+                                <span id="max-label">Max:</span> <strong id="tempmax">----°</strong>, 
+                                <span id="min-label">Min:</span> <strong id="tempmin">----°</strong>
+                            </p>
+                            
                             <div class="d-flex flex-row align-items-center">
                                 <p class="mb-0 me-4" id="details">----------</p>
-                                <i class="fas fa-cloud fa-3x" style="color: #eee;"></i>
+                                <img id="weather-icon" src="" alt="Ícono del clima" style="width: 50px; height: 50px;">
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
-   
-
-
-    </div>
-    </div>
 
     <footer class="text-white text-center border-top mt-auto">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2022 Copyright: ASaave Pages
         </div>
-        </div>
     </footer>
-    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/tengbao/vanta/dist/vanta.fog.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 
+    <!-- Vanta Fog Initialization -->
+    <script>
+        VANTA.FOG({
+            el: "#mains",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            highlightColor: 0xf5eddb,
+            midtoneColor: 0xf5dedb,
+            lowlightColor: 0x5840de
+        })
+    </script>
 </body>
-
 </html>
